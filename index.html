@@ -20,21 +20,22 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden; /* Mencegah scroll ganda di desktop */
         }
         
-        /* Desain Header Utama (Desktop) */
+        /* Desain Header: 3 Kolom Sejajar Sempurna */
         .app-header {
             width: 100%;
+            height: 65px;
             background: #ffffff;
-            padding: 10px 20px;
+            padding: 0 20px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-sizing: border-box;
             z-index: 1000;
-            border-bottom: 3px solid #1a5276;
+            border-bottom: 3px solid #136ba1;
             flex-shrink: 0;
         }
 
@@ -43,11 +44,12 @@
             align-items: center;
             gap: 12px;
             flex: 1;
+            white-space: nowrap;
         }
 
         .app-logo {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
 
@@ -59,7 +61,7 @@
         .app-name {
             font-weight: 700;
             font-size: 14px;
-            color: #1a5276;
+            color: #136ba1;
         }
 
         .app-subtitle {
@@ -71,11 +73,12 @@
         .header-center {
             flex: 1.2;
             text-align: center;
+            white-space: nowrap;
         }
 
         .map-main-title {
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             color: #2c3e50;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -93,13 +96,14 @@
             font-size: 12px;
             color: #2c3e50;
             line-height: 1.3;
+            white-space: nowrap;
         }
 
         .header-right b {
             color: #136ba1;
         }
 
-        /* Wadah Peta */
+        /* Wadah Peta Mengisi Sisa Ruang */
         #map {
             width: 100%;
             flex: 1;
@@ -144,41 +148,40 @@
             flex: 1;
         }
 
-        /* PENGATURAN KHUSUS LAYAR HP (RESPONSIVE MOBILE) */
+        /* PENGATURAN RESPONSIF KHUSUS HP (MOBILE) */
         @media (max-width: 768px) {
-            body {
-                overflow: auto; /* Membolehkan scroll jika diperlukan di layar sangat kecil */
+            html, body {
+                overflow: auto; /* Mengizinkan scroll di layar HP jika diperlukan */
             }
             .app-header {
+                height: auto;
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                padding: 10px;
+                padding: 12px 10px;
                 gap: 8px;
             }
             .header-left, .header-center, .header-right {
                 width: 100%;
                 text-align: center;
-                flex: none;
+                white-space: normal;
+                flex: unset;
             }
             .header-left {
                 justify-content: center;
             }
-            .app-name {
-                font-size: 13px;
+            .app-subtitle {
+                display: block; /* Memastikan sub-judul tetap tampil rapi di HP */
             }
-            .map-main-title {
-                font-size: 13px;
-            }
-            .header-right {
-                font-size: 11px;
+            #map {
+                height: calc(100vh - 140px); /* Menyesuaikan tinggi peta dengan header mobile */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Responsif -->
+    <!-- Header Rapih Sejajar -->
     <header class="app-header">
         <div class="header-left">
             <img src="images/LOGOUGM.png" alt="Logo UGM" class="app-logo">
@@ -194,8 +197,8 @@
         </div>
 
         <div class="header-right">
-            <div><b>25/569731/PTK/16946</div>
-            <div><b>Web Geospasial</div>
+            <div>25/569731/PTK/16946</div>
+            <div>Web Geospasial</div>
         </div>
     </header>
 
