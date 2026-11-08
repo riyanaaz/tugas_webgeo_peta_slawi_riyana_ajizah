@@ -97,15 +97,15 @@
             color: #2c3e50;
             line-height: 1.3;
             white-space: nowrap;
-            text-decoration: none; /* Memastikan tidak ada garis bawah */
         }
 
-        .header-right .nim-text {
-            color: #2c3e50; /* Warna teks biasa, bukan biru */
-            font-weight: normal;
-            text-decoration: none;
+        /* Memaksa teks NIM bersih dari warna biru/garis bawah */
+        .nim-text {
+            color: #2c3e50 !important;
+            text-decoration: none !important;
+            background-color: transparent !important;
         }
-
+        
         .header-right b {
             color: #136ba1;
         }
@@ -155,48 +155,39 @@
             flex: 1;
         }
 
-        /* KONDISI DI HP: TETAP HORIZONTAL & KABUPATEN DISINGKAT JADI KAB. */
+        /* PENGATURAN HP: TEKS DISEMPURNAKAN AGAR TETAP KESAMPING TANPA ADA YANG DIHAPUS */
         @media (max-width: 768px) {
             .app-header {
-                height: 52px;
+                height: 55px;
                 padding: 0 6px;
             }
             .header-left {
-                gap: 5px;
+                gap: 6px;
                 flex: 1;
             }
             .app-logo {
-                width: 26px;
-                height: 26px;
+                width: 28px;
+                height: 28px;
             }
             .app-name {
-                font-size: 10px;
+                font-size: 10.5px;
             }
             .app-subtitle {
-                font-size: 8px;
+                font-size: 8.5px;
             }
             .header-center {
                 flex: 1.1;
             }
             .map-main-title {
-                font-size: 10.5px;
+                font-size: 11px;
             }
-            .map-sub-title-full {
-                display: none; /* Sembunyikan teks panjang di HP */
-            }
-            .map-sub-title-short {
-                display: inline !important; /* Tampilkan versi singkat di HP */
-                font-size: 8px;
+            .map-sub-title {
+                font-size: 8.5px;
             }
             .header-right {
                 flex: 1;
-                font-size: 8.5px;
+                font-size: 9px;
             }
-        }
-
-        /* Default Sembunyikan versi singkat di desktop */
-        .map-sub-title-short {
-            display: none;
         }
     </style>
 </head>
@@ -214,13 +205,12 @@
         
         <div class="header-center">
             <div class="map-main-title">Peta Slawi</div>
-            <div class="map-sub-title map-sub-title-full">Kabupaten Tegal, Jawa Tengah</div>
-            <div class="map-sub-title map-sub-title-short">Kab. Tegal, Jateng</div>
+            <div class="map-sub-title">Kab. Tegal, Jawa Tengah</div>
         </div>
 
         <div class="header-right">
-            <div class="nim-text">25/569731/PTK/16946</div>
-            <div><b>Web Geospasial</b></div>
+            <div>25/569731/PTK/16946</div>
+            <div>Web Geospasial</div>
         </div>
     </header>
 
